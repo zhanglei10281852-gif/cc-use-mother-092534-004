@@ -2,21 +2,71 @@
   {
     "code": "P-04-01",
     "name": "版本绑定",
-    "description": "派生数据必须能够追溯到全部直接来源"
+    "description": "派生数据必须能够追溯到全部直接来源",
+    "enforcement": {
+      "type": "lineage",
+      "requires": ["upstream_item_id", "upstream_version_no"],
+      "on_violation": "reject_write"
+    }
   },
   {
     "code": "P-04-02",
     "name": "并发边界",
-    "description": "法律保全优先于普通删除但必须给出原因"
+    "description": "法律保全优先于普通删除但必须给出原因",
+    "enforcement": {
+      "type": "legal_hold",
+      "requires": ["hold_id", "reason", "created_by"],
+      "on_violation": "freeze_node_and_continue_others"
+    }
   },
   {
     "code": "P-04-03",
     "name": "恢复约束",
-    "description": "已影响决策的旧版本只能追加更正不能覆盖"
+    "description": "已影响决策的旧版本只能追加更正不能覆盖",
+    "enforcement": {
+      "type": "append_only_versioning",
+      "on_violation": "reject_overwrite"
+    }
   },
   {
     "code": "P-04-04",
     "name": "审计结果",
-    "description": "重复删除请求不得创建第二条清除链"
+    "description": "重复删除请求不得创建第二条清除链",
+    "enforcement": {
+      "type": "idempotent_request",
+      "key": ["tenant_id", "subject_id"],
+      "on_violation": "return_existing_chain"
+    }
+  },
+  {
+    "code": "P-05-01",
+    "name": "保留期限裁决",
+    "description": "保留期限由用户选择、合同最低保留与法律保全共同决定：取用户选择与合同下限的较长者，保全期内一律不得清除",
+    "enforcement": {
+      "type": "retention_resolution",
+      "inputs": ["user_choice", "contract_minimum", "legal_hold"],
+      "effective_expiry": "max(user_expiry, contract_min_expiry)",
+      "hold_effect": "block_erasure_until_released_with_reason"
+    }
+  },
+  {
+    "code": "P-05-02",
+    "name": "分阶段删除",
+    "description": "先隔离进入可恢复期，期满后物理清除，清除证明不含原文",
+    "enforcement": {
+      "type": "staged_erasure",
+      "stages": ["quarantine_recoverable", "purge_irrecoverable"],
+      "certificate": "identifiers_and_hashes_only"
+    }
+  },
+  {
+    "code": "P-05-03",
+    "name": "审计最小知情",
+    "description": "审计员可按时点还原任务可读记忆清单，但内容可见性受审计人自身权限约束",
+    "enforcement": {
+      "type": "point_in_time_audit",
+      "default": "redact_content",
+      "content_requires": "auditor_content_access"
+    }
   }
 ]

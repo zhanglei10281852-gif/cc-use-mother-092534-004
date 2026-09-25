@@ -2,12 +2,17 @@
   "project": "智能体记忆分级治理",
   "entities": [
     "memory_item",
+    "memory_version",
     "source_record",
     "derivation_edge",
     "retention_rule",
     "legal_hold",
+    "task_grant",
+    "decision_use",
     "erasure_request",
-    "erasure_step"
+    "erasure_step",
+    "quarantined_content",
+    "erasure_certificate"
   ],
   "states": [
     "active",
@@ -15,17 +20,25 @@
     "held",
     "exporting",
     "pending_erasure",
+    "recoverable",
     "erasing",
     "erased",
+    "withdrawn",
     "failed"
   ],
   "event_types": [
     "memory.ingested",
     "memory.derived",
     "memory.corrected",
+    "decision.used",
+    "retention.configured",
     "hold.applied",
+    "hold.released",
     "export.requested",
     "erasure.requested",
+    "erasure.quarantined",
+    "erasure.restored",
+    "erasure.purged",
     "erasure.step_completed",
     "erasure.completed"
   ],
@@ -33,9 +46,16 @@
   "identifier_policy": "同一租户和对象类型内业务标识唯一",
   "version_policy": "已发布规则与事实通过新版本追加，不覆盖历史",
   "rules": [
-    "派生数据必须能够追溯到全部直接来源",
+    "写入时必须记录租户、数据主体、来源、目的与敏感类别",
+    "派生数据必须能够追溯到全部直接来源及其版本",
+    "保留期限由用户选择、合同最低保留要求与法律保全共同决定",
     "法律保全优先于普通删除但必须给出原因",
     "已影响决策的旧版本只能追加更正不能覆盖",
-    "重复删除请求不得创建第二条清除链"
+    "导出与删除必须沿派生依赖图覆盖摘要、索引片段和任务引用",
+    "删除按隔离（可恢复）到清除（不可恢复）分阶段执行",
+    "重复删除请求不得创建第二条清除链",
+    "删除中断后重新执行只处理未完成步骤",
+    "清除证明只含标识、散列与计数，不含任何原文",
+    "审计可按历史时点还原任务可读记忆，但内容受审计人自身权限约束"
   ]
 }
