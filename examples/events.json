@@ -8,37 +8,93 @@
   },
   {
     "event_id": "evt-04-002",
+    "event_type": "task.granted",
+    "aggregate_id": "case-04-001",
+    "occurred_at": "2026-09-25T09:30:00+08:00",
+    "actor_id": "reviewer-02"
+  },
+  {
+    "event_id": "evt-04-003",
     "event_type": "memory.derived",
     "aggregate_id": "case-04-001",
     "occurred_at": "2026-09-25T10:00:00+08:00",
     "actor_id": "reviewer-02"
   },
   {
-    "event_id": "evt-04-003",
+    "event_id": "evt-04-004",
+    "event_type": "task.access_recorded",
+    "aggregate_id": "case-04-001",
+    "occurred_at": "2026-09-25T10:30:00+08:00",
+    "actor_id": "operator-01"
+  },
+  {
+    "event_id": "evt-04-005",
     "event_type": "memory.corrected",
     "aggregate_id": "case-04-001",
     "occurred_at": "2026-09-25T11:00:00+08:00",
     "actor_id": "operator-01"
   },
   {
-    "event_id": "evt-04-004",
+    "event_id": "evt-04-006",
+    "event_type": "retention.rule_published",
+    "aggregate_id": "case-04-001",
+    "occurred_at": "2026-09-25T11:30:00+08:00",
+    "actor_id": "reviewer-02"
+  },
+  {
+    "event_id": "evt-04-007",
     "event_type": "hold.applied",
     "aggregate_id": "case-04-001",
     "occurred_at": "2026-09-25T12:00:00+08:00",
     "actor_id": "reviewer-02"
   },
   {
-    "event_id": "evt-04-005",
+    "event_id": "evt-04-008",
+    "event_type": "hold.released",
+    "aggregate_id": "case-04-001",
+    "occurred_at": "2026-09-25T12:30:00+08:00",
+    "actor_id": "reviewer-02"
+  },
+  {
+    "event_id": "evt-04-009",
     "event_type": "export.requested",
     "aggregate_id": "case-04-001",
     "occurred_at": "2026-09-25T13:00:00+08:00",
     "actor_id": "operator-01"
   },
   {
-    "event_id": "evt-04-006",
+    "event_id": "evt-04-010",
+    "event_type": "export.completed",
+    "aggregate_id": "case-04-001",
+    "occurred_at": "2026-09-25T13:30:00+08:00",
+    "actor_id": "operator-01"
+  },
+  {
+    "event_id": "evt-04-011",
     "event_type": "erasure.requested",
     "aggregate_id": "case-04-001",
     "occurred_at": "2026-09-25T14:00:00+08:00",
     "actor_id": "reviewer-02"
+  },
+  {
+    "event_id": "evt-04-012",
+    "event_type": "erasure.step_completed",
+    "aggregate_id": "case-04-001",
+    "occurred_at": "2026-09-25T14:30:00+08:00",
+    "actor_id": "system"
+  },
+  {
+    "event_id": "evt-04-013",
+    "event_type": "erasure.step_completed",
+    "aggregate_id": "case-04-001",
+    "occurred_at": "2026-09-25T15:00:00+08:00",
+    "actor_id": "system"
+  },
+  {
+    "event_id": "evt-04-014",
+    "event_type": "erasure.completed",
+    "aggregate_id": "case-04-001",
+    "occurred_at": "2026-09-25T15:30:00+08:00",
+    "actor_id": "system"
   }
 ]
