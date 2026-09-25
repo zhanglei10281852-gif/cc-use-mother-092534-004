@@ -1,0 +1,41 @@
+{
+  "project": "智能体记忆分级治理",
+  "entities": [
+    "memory_item",
+    "source_record",
+    "derivation_edge",
+    "retention_rule",
+    "legal_hold",
+    "erasure_request",
+    "erasure_step"
+  ],
+  "states": [
+    "active",
+    "superseded",
+    "held",
+    "exporting",
+    "pending_erasure",
+    "erasing",
+    "erased",
+    "failed"
+  ],
+  "event_types": [
+    "memory.ingested",
+    "memory.derived",
+    "memory.corrected",
+    "hold.applied",
+    "export.requested",
+    "erasure.requested",
+    "erasure.step_completed",
+    "erasure.completed"
+  ],
+  "time_policy": "ISO 8601 with timezone",
+  "identifier_policy": "同一租户和对象类型内业务标识唯一",
+  "version_policy": "已发布规则与事实通过新版本追加，不覆盖历史",
+  "rules": [
+    "派生数据必须能够追溯到全部直接来源",
+    "法律保全优先于普通删除但必须给出原因",
+    "已影响决策的旧版本只能追加更正不能覆盖",
+    "重复删除请求不得创建第二条清除链"
+  ]
+}

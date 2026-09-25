@@ -1,0 +1,44 @@
+[
+  {
+    "event_id": "evt-04-001",
+    "event_type": "memory.ingested",
+    "aggregate_id": "case-04-001",
+    "occurred_at": "2026-09-25T09:00:00+08:00",
+    "actor_id": "operator-01"
+  },
+  {
+    "event_id": "evt-04-002",
+    "event_type": "memory.derived",
+    "aggregate_id": "case-04-001",
+    "occurred_at": "2026-09-25T10:00:00+08:00",
+    "actor_id": "reviewer-02"
+  },
+  {
+    "event_id": "evt-04-003",
+    "event_type": "memory.corrected",
+    "aggregate_id": "case-04-001",
+    "occurred_at": "2026-09-25T11:00:00+08:00",
+    "actor_id": "operator-01"
+  },
+  {
+    "event_id": "evt-04-004",
+    "event_type": "hold.applied",
+    "aggregate_id": "case-04-001",
+    "occurred_at": "2026-09-25T12:00:00+08:00",
+    "actor_id": "reviewer-02"
+  },
+  {
+    "event_id": "evt-04-005",
+    "event_type": "export.requested",
+    "aggregate_id": "case-04-001",
+    "occurred_at": "2026-09-25T13:00:00+08:00",
+    "actor_id": "operator-01"
+  },
+  {
+    "event_id": "evt-04-006",
+    "event_type": "erasure.requested",
+    "aggregate_id": "case-04-001",
+    "occurred_at": "2026-09-25T14:00:00+08:00",
+    "actor_id": "reviewer-02"
+  }
+]

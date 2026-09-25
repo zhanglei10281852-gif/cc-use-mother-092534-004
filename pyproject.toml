@@ -1,0 +1,9 @@
+[project]
+name = "ccusr-memory-governance"
+version = "0.1.0"
+description = "记忆摄取、来源链、保留策略、法律保全和可验证删除的领域资料"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.unittest]
+start-directory = "tests"
